@@ -1,4 +1,5 @@
-name: Terraform - Resource Groups
+name: Terraform - VM
+
 on:
   push:
     branches:
@@ -18,7 +19,7 @@ jobs:
     name: Terraform VM config
     strategy:
       matrix:
-         folder: [resource_groups]
+         folder: [vm]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codebase
@@ -54,6 +55,6 @@ jobs:
         run: |
           terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
 
-      - name: Terraform Apply
-        working-directory: ${{ matrix.folder }}
-        run: terraform apply -input=false -auto-approve vsphere.tfplan
+      # - name: Terraform Apply
+      #   working-directory: ${{ matrix.folder }}
+      #   run: terraform apply -input=false -auto-approve vsphere.tfplan
