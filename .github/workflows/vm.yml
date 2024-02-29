@@ -20,4 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codebase
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Check runner
+        run: sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+      
+      - name: Fetch gpg key
+        run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      
+      - name: Add Hashicorp repo
+        run: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
+      
+      - name: Install Terraform
+        run: sudo apt-get update && sudo apt-get install terraform -y && terraform version
