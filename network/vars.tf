@@ -6,7 +6,7 @@ variable "rsg_network" {
   type = string
   default = "placeholder"
 }
-variable "network-name" {
+variable "network_name" {
   type = string
   default = "gdale-rancher-network"
 }
