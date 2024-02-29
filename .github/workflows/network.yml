@@ -1,4 +1,4 @@
-name: Terraform - Resource Groups
+name: Terraform - Network
 on:
   push:
     branches:

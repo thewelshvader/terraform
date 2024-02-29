@@ -10,3 +10,7 @@ variable "network_name" {
   type = string
   default = "gdale-rancher-network"
 }
+variable "subnet_name" {
+  type = string
+  default = "gdale-rancher-subnet"
+}
