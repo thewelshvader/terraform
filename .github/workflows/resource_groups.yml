@@ -2,7 +2,7 @@ name: Terraform - Resource Groups
 on:
   push:
     branches:
-      - main
+      - adding-tf-vars
     paths:
       - 'resource_groups/**'
 
@@ -11,6 +11,7 @@ env:
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  TF_VAR_rsg_rancher: ${{ vars.RSG_RANCHER }}
 
 jobs:
   manage_vm:
