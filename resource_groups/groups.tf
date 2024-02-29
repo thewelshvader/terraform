@@ -3,6 +3,6 @@ resource "azurerm_resource_group" "rancher" {
   location = "UK South"
 }
 resource "azurerm_resource_group" "network" {
-  name     = "rsg-network"
+  name     = var.rsg_network
   location = "UK South"
 }

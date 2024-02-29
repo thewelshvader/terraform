@@ -12,6 +12,7 @@ env:
   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   TF_VAR_rsg_rancher: ${{ vars.RSG_RANCHER }}
+  TF_VAR_rsg_network: ${{ vars.RSG_NETWORK }}
 
 jobs:
   manage_vm:
