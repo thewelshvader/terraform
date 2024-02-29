@@ -1,6 +1,7 @@
 name: Terraform - VM
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - '**'
