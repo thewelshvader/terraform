@@ -2,7 +2,7 @@ name: Terraform - Resource Groups
 on:
   push:
     branches:
-      - adding-tf-vars
+      - main
     paths:
       - 'network/**'
 
