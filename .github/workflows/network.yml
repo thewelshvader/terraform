@@ -42,7 +42,7 @@ jobs:
         run: |
           terraform init -input=false \
           -backend-config "container_name=${{ vars.CONTAINER_NAME }}" \
-          -backend-config "key=${{ vars.BACKEND_RSG_KEY }}"
+          -backend-config "key=${{ vars.BACKEND_NETWORK_KEY }}"
 
       - name: Terraform Validate ${{ matrix.folder }}
         id: validate
