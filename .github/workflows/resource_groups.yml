@@ -19,7 +19,7 @@ jobs:
     name: Terraform VM config
     strategy:
       matrix:
-         folder: [vm]
+         folder: [resource_groups]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codebase
@@ -38,6 +38,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install terraform -y && terraform version
       
       - name: Terraform init
+        working-directory: ${{ matrix.folder }}
         run: |
           terraform init -input=false \
           -backend-config "container_name=${{ vars.CONTAINER_NAME }}" \
