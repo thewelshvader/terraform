@@ -54,3 +54,7 @@ jobs:
         working-directory: ${{ matrix.folder }}
         run: |
           terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
+
+      - name: Terraform Apply
+        working-directory: ${{ matrix.folder }}
+        run: terraform apply -input=false -auto-approve vsphere.tfplan
