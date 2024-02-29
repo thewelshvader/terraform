@@ -2,9 +2,9 @@ name: Terraform - Resource Groups
 on:
   push:
     branches:
-      - main
+      - adding-tf-vars
     paths:
-      - 'resource_groups/**'
+      - 'network/**'
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -19,7 +19,7 @@ jobs:
     name: Terraform VM config
     strategy:
       matrix:
-         folder: [resource_groups]
+         folder: [network]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codebase
