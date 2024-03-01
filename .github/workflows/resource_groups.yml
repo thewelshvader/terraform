@@ -46,13 +46,13 @@ jobs:
       - name: Terraform Validate ${{ matrix.folder }}
         id: validate
         working-directory: ${{ matrix.folder }}
-        run: terraform validate -var-file='../terraform.tfvars'
+        run: terraform validate -var-file=../terraform.tfvars
 
       - name: Terraform Plan ${{ matrix.folder }}
         id: plan
         working-directory: ${{ matrix.folder }}
         run: |
-          terraform plan -var-file="../vars.tf" -input=false -no-color -lock=false -out=vsphere.tfplan
+          terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
 
       - name: Terraform Apply
         working-directory: ${{ matrix.folder }}
