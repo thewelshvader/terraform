@@ -1,3 +1,4 @@
+# Resource Groups
 variable "rsg_rancher" {
   type = string
   default = "placeholder"
