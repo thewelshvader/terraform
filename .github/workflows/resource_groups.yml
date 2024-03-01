@@ -3,7 +3,7 @@ name: Terraform - Resource Groups
 on:
   push:
     branches:
-      - main
+      - kd-move-vars-file
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}

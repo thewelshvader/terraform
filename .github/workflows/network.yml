@@ -1,8 +1,10 @@
 name: Terraform - Network
+
 on:
-  push:
-    branches:
-      - kd-move-vars-file
+  workflow_run:
+    workflows: [Terraform - Resource Groups]
+    types:
+      - completed
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
