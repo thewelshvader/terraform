@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'network/**'
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}

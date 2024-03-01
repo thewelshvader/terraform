@@ -43,10 +43,10 @@ jobs:
           -backend-config "container_name=${{ vars.CONTAINER_NAME }}" \
           -backend-config "key=${{ vars.BACKEND_RSG_KEY }}"
 
-      # - name: Terraform Validate ${{ matrix.folder }}
-      #   id: validate
-      #   working-directory: ${{ matrix.folder }}
-      #   run: terraform validate
+      - name: Terraform Validate ${{ matrix.folder }}
+        id: validate
+        working-directory: ${{ matrix.folder }}
+        run: terraform validate
 
       - name: Terraform Plan
         id: plan
