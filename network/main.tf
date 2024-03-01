@@ -22,7 +22,3 @@ variable "network_name" {
   type = string
   default = "placeholder"
 }
-variable "subnet_name" {
-  type = string
-  default = "placeholder"
-}
