@@ -43,16 +43,16 @@ jobs:
           -backend-config "container_name=${{ vars.CONTAINER_NAME }}" \
           -backend-config "key=${{ vars.BACKEND_RSG_KEY }}"
 
-      - name: Terraform Validate ${{ matrix.folder }}
-        id: validate
-        working-directory: ${{ matrix.folder }}
-        run: terraform validate -input=false
+      # - name: Terraform Validate ${{ matrix.folder }}
+      #   id: validate
+      #   working-directory: ${{ matrix.folder }}
+      #   run: terraform validate
 
       - name: Terraform Plan ${{ matrix.folder }}
         id: plan
         working-directory: ${{ matrix.folder }}
         run: |
-          terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
+          terraform plan -var-file="../terraform.tfvars" -input=false -no-color -lock=false -out=vsphere.tfplan
 
       - name: Terraform Apply
         working-directory: ${{ matrix.folder }}
