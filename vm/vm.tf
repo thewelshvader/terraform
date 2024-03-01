@@ -25,7 +25,7 @@ resource "azurerm_network_security_group" "rancher_nsg" {
 resource "azurerm_subnet" "snet-rancher-main" {
   name                 = var.subnet_name
   resource_group_name  = var.rsg_network
-  virtual_network_name = azurerm_virtual_network.main.name
+  virtual_network_name = var.network_name
   address_prefixes     = ["10.0.0.0/26"]
 }
 
