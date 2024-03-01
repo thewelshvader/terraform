@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - adding-vm-cfg
+      - main
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
