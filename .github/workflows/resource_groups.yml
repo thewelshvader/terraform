@@ -46,7 +46,7 @@ jobs:
       - name: Terraform Validate ${{ matrix.folder }}
         id: validate
         working-directory: ${{ matrix.folder }}
-        run: terraform validate -var-file=../terraform.tfvars
+        run: terraform validate -input=false
 
       - name: Terraform Plan ${{ matrix.folder }}
         id: plan
