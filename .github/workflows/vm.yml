@@ -1,10 +1,10 @@
-name: Terraform - Resource Groups
+name: Terraform - VM
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - adding-vm-cfg
+  workflow_run:
+    workflows: [Terraform - Network]
+    types:
+      - completed
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -19,7 +19,7 @@ jobs:
     name: Terraform VM config
     strategy:
       matrix:
-         folder: [resource_groups]
+         folder: [vm]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codebase
@@ -42,19 +42,19 @@ jobs:
         run: |
           terraform init -input=false \
           -backend-config "container_name=${{ vars.CONTAINER_NAME }}" \
-          -backend-config "key=${{ vars.BACKEND_RSG_KEY }}"
+          -backend-config "key=${{ vars.BACKEND_VM_KEY }}"
 
       - name: Terraform Validate ${{ matrix.folder }}
         id: validate
         working-directory: ${{ matrix.folder }}
         run: terraform validate
 
-      - name: Terraform Plan
+      - name: Terraform Plan ${{ matrix.folder }}
         id: plan
         working-directory: ${{ matrix.folder }}
         run: |
           terraform plan -var-file="../terraform.tfvars" -input=false -no-color -lock=false -out=vsphere.tfplan
 
-      - name: Terraform Apply
-        working-directory: ${{ matrix.folder }}
-        run: terraform apply -input=false -auto-approve vsphere.tfplan
+      # - name: Terraform Apply
+      #   working-directory: ${{ matrix.folder }}
+      #   run: terraform apply -input=false -auto-approve vsphere.tfplan
