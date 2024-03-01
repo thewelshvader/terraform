@@ -51,7 +51,7 @@ jobs:
         id: plan
         working-directory: ${{ matrix.folder }}
         run: |
-          terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
+          terraform plan -var-file="../terraform.tfvars" -input=false -no-color -lock=false -out=vsphere.tfplan
 
       - name: Terraform Apply
         working-directory: ${{ matrix.folder }}
