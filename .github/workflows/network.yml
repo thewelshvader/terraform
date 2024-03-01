@@ -1,10 +1,10 @@
 name: Terraform - Network
+
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'network/**'
+  workflow_run:
+    workflows: [Terraform - Resource Groups]
+    types:
+      - completed
 
 env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
@@ -53,7 +53,7 @@ jobs:
         id: plan
         working-directory: ${{ matrix.folder }}
         run: |
-          terraform plan -input=false -no-color -lock=false -out=vsphere.tfplan
+          terraform plan -var-file="../terraform.tfvars" -input=false -no-color -lock=false -out=vsphere.tfplan
 
       - name: Terraform Apply
         working-directory: ${{ matrix.folder }}
