@@ -47,3 +47,31 @@ resource "azurerm_network_interface_security_group_association" "example" {
   network_interface_id      = azurerm_network_interface.vm_nic.id
   network_security_group_id = azurerm_network_security_group.rancher_nsg.id
 }
+
+resource "azurerm_linux_virtual_machine" "gdale_rancher_vm1" {
+  name                = var.vm_name
+  resource_group_name = var.rsg_rancher
+  location            = "UK South"
+  size                = "Standard_B2s"
+  admin_username      = "kevin"
+  network_interface_ids = [
+    azurerm_network_interface.vm_nic.id,
+  ]
+
+  admin_ssh_key {
+    username   = "kevin"
+    public_key = file("~/.ssh/${var.vm_name}.pub")
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
+}
