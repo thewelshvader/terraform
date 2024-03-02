@@ -13,6 +13,7 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   TF_VAR_rsg_rancher: ${{ vars.RSG_RANCHER }}
   TF_VAR_rsg_network: ${{ vars.RSG_NETWORK }}
+  TF_VAR_public_key: ${{ secrets.VM_PUBLIC_KEY }}
 
 jobs:
   manage_vm:

@@ -60,7 +60,7 @@ resource "azurerm_linux_virtual_machine" "gdale_rancher_vm1" {
 
   admin_ssh_key {
     username   = "kevin"
-    public_key = file("~/.ssh/${var.vm_name}.pub")
+    public_key = var.public_key
   }
 
   os_disk {

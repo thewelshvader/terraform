@@ -30,3 +30,7 @@ variable "subnet_name" {
   type = string
   default = "placeholder"
 }
+variable "public_key" {
+  type = string
+  default = "placeholder"
+}
