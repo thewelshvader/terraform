@@ -52,7 +52,7 @@ resource "azurerm_linux_virtual_machine" "gdale_rancher_vm1" {
   name                = var.vm_name
   resource_group_name = var.rsg_rancher
   location            = "UK South"
-  size                = "Standard_B2s"
+  size                = "Standard_B2ms"
   admin_username      = "kevin"
   network_interface_ids = [
     azurerm_network_interface.vm_nic.id,
